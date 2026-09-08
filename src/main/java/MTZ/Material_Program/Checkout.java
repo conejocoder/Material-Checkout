@@ -26,5 +26,7 @@ public class Checkout {
     private Long jobId;
     private Long materialId;
     private BigDecimal quantity;
+    private BigDecimal usedQuantity = BigDecimal.ZERO;
+    private BigDecimal returnedQuantity = BigDecimal.ZERO;
     private Instant issuedAt;
 }

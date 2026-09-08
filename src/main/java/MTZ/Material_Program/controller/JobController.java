@@ -6,21 +6,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 
 
 @RestController
-@RequestMapping("api/jobs")
+@RequestMapping("/api/jobs")
 public class JobController {
 
-    private final MTZ.Material_Program.repository.JobRepository jobRepository;
+
     private final JobService jobService;
 
-    public JobController(JobService jobService, MTZ.Material_Program.repository.JobRepository jobRepository){
+    public JobController(JobService jobService){
         this.jobService = jobService;
-        this.jobRepository = jobRepository;
     }
 
     @GetMapping
@@ -29,12 +28,34 @@ public class JobController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Job> getJobById(@PathVariable Long id){
+    public ResponseEntity <Job> getJobById(@PathVariable Long id){
         return jobService.getJobById(id)
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
     }
-    
+
+    @PostMapping
+    public Job createJob(@RequestBody Job job){
+
+        return jobService.createJob(job);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Job> updateJob(@PathVariable Long id, @RequestBody Job jobDetails){
 
 
+        return jobService.updateJob(id, jobDetails)
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
+    }
 
-    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void>deleteJob(@PathVariable Long id){
+        if (!jobService.deleteJob(id)){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+
+    }
 }

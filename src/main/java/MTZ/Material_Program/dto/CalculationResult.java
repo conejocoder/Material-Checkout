@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public record CalculationResult(
 
     BigDecimal approvedQuantity,
-    BigDecimal issuedQuanity,
+    BigDecimal issuedQuantity,
     BigDecimal usedQuantity,
     BigDecimal returnedQuantity,
     BigDecimal unaccountedQuantity,

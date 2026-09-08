@@ -6,7 +6,7 @@ public record CalculationRequest(
     BigDecimal squareFootage,
     BigDecimal materialRate,
     BigDecimal issuedQuantity,
-    BigDecimal usedQuanity,
+    BigDecimal usedQuantity,
     BigDecimal returnedQuantity,
     BigDecimal unitCost
 ) {
