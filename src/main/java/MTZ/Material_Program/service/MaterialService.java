@@ -44,7 +44,7 @@ public class MaterialService {
     }
 
     public List<Checkout> getCheckoutsByWorkerAndJob(Long workerId, Long jobId){
-        return checkoutRepository.findByWorkerAndJobId(workerId, jobId);
+        return checkoutRepository.findByWorkerIdAndJobId(workerId, jobId);
     }
     public List<Checkout> getAllCheckouts() {
         return checkoutRepository.findAll();
@@ -73,7 +73,7 @@ public class MaterialService {
 
 
         BigDecimal unaccountedQuantity = request.issuedQuantity()
-            .subtract(request.usedQuanity())
+            .subtract(request.usedQuantity())
             .subtract(request.returnedQuantity())
             .max(BigDecimal.ZERO);
 
@@ -88,7 +88,7 @@ public class MaterialService {
         return new CalculationResult(
             approvedQuantity,
             request.issuedQuantity(),
-            request.usedQuanity(),
+            request.usedQuantity(),
             request.returnedQuantity(),
             unaccountedQuantity,
             excessQuantity,

@@ -38,7 +38,7 @@ public class MaterialController {
         return materialService.saveMaterial(material);
      }
 
-     @GetMapping ("/checkout/worker/{workerId")
+     @GetMapping ("/checkout/worker/{workerId}")
      public List<Checkout> getByWorker(@PathVariable Long workerId) {
         return materialService.getCheckoutsByWorker(workerId);
      }
@@ -63,7 +63,7 @@ public class MaterialController {
         return materialService.getAllMaterials();
      }
 
-     @GetMapping("/{id")
+     @GetMapping("/{id}")
      public ResponseEntity<Material> getMaterialById(@PathVariable Long id){
         return materialService.getMaterialById(id)
         .map(ResponseEntity::ok)

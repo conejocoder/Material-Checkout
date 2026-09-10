@@ -8,5 +8,5 @@ public interface CheckoutRepository extends JpaRepository<Checkout, Long> {
 
     List<Checkout> findByWorkerId(Long workerId);
     List<Checkout> findByJobId(Long jobId);
-    List<Checkout> findByWorkerAndJobId(Long workerId, Long jobId);
+    List<Checkout> findByWorkerIdAndJobId(Long workerId, Long jobId);
 }

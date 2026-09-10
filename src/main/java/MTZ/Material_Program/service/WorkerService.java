@@ -12,23 +12,23 @@ public class WorkerService {
 
     private final WorkerRepository workerRepository;
 
-    public WorkerService(WorkerRepository workerRepository) {
+    public WorkerService(WorkerRepository workerRepository){
         this.workerRepository = workerRepository;
     }
 
-    public List<Worker> getAllWorkers() {
+    public List<Worker> getAllWorkers(){
         return workerRepository.findAll();
     }
 
-    public Optional<Worker> getWorkerById(Long id) {
+    public Optional<Worker> getWorkerById(Long id){
         return workerRepository.findById(id);
     }
 
-    public Worker createWorker(Worker worker) {
+    public Worker createWorker(Worker worker){
         return workerRepository.save(worker);
     }
 
-    public Optional<Worker> updateWorker(Long id, Worker workerDetails) {
+    public Optional<Worker> updateWorker(Long id, Worker workerDetails){
         return workerRepository.findById(id)
                 .map(existingWorker -> {
                     existingWorker.setName(workerDetails.getName());
@@ -38,8 +38,8 @@ public class WorkerService {
                 });
     }
 
-    public boolean deleteWorker(Long id) {
-        if (!workerRepository.existsById(id)) {
+    public boolean deleteWorker(Long id){
+        if (!workerRepository.existsById(id)){
             return false;
         }
 

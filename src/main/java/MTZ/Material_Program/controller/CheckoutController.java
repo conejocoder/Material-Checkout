@@ -49,7 +49,7 @@ public class CheckoutController {
         .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id")
+    @DeleteMapping("/{id}")
     public ResponseEntity <Checkout> deleteCheckout(@PathVariable long id){
         if (!checkoutService.deleteCheckout(id)){
             return ResponseEntity.notFound().build();
